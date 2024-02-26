@@ -1,5 +1,6 @@
 import chalk from 'chalk';
 import dedent from 'dedent-js';
+import { getIcon } from '../services/api.service.js';
 
 const printError = (error) => {
     console.log(chalk.bgRed(' ERROR ') + ' ' + error);
@@ -28,12 +29,12 @@ function capitalizeFirstLetter(string) {
 
 function showWeather(weather) {
 
-    const description = chalk.bgGreen(' ' + capitalizeFirstLetter(weather.weather[0].description) + ' ');
-
+    const description = chalk.bgCyan(' ' + capitalizeFirstLetter(weather.weather[0].description) + ' ');
+    const icon = getIcon(weather.weather[0].icon);
     console.log(
-        dedent`${chalk.bgBlueBright(' Погода ')}
-🏙️      ${weather.name}        
-⛅     Описание: ${description}               
+        dedent`🏙️    ${chalk.bgBlueBright(` Погода в городе: ${weather.name} `)}        
+⛅     Описание: ${description} ${icon} 
+🌊     Влажность: ${weather.main.humidity}             
 🔥     Температура: ${weather.main.temp}       
 🍃     Скорость ветра: ${weather.wind.speed}   	
 	`
