@@ -33,7 +33,7 @@ function showWeather(weather) {
     const icon = getIcon(weather.weather[0].icon);
     console.log(
         dedent`🏙️    ${chalk.bgBlueBright(` Погода в городе: ${weather.name} `)}        
-⛅     Описание: ${description} ${icon} 
+⛅     ${description} ${icon} 
 🌊     Влажность: ${weather.main.humidity}             
 🔥     Температура: ${weather.main.temp}       
 🍃     Скорость ветра: ${weather.wind.speed}   	
