@@ -20,5 +20,27 @@ const printHelp = () => {
     );
 };
 
-export { printError, printSuccess, printHelp };
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+
+
+function showWeather(weather) {
+
+    const description = chalk.bgGreen(' ' + capitalizeFirstLetter(weather.weather[0].description) + ' ');
+
+    console.log(
+        dedent`${chalk.bgBlueBright(' Погода ')}
+🏙️      ${weather.name}        
+⛅     Описание: ${description}               
+🔥     Температура: ${weather.main.temp}       
+🍃     Скорость ветра: ${weather.wind.speed}   	
+	`
+    );
+}
+
+export { printError, printSuccess, printHelp, showWeather };
+
+
 
